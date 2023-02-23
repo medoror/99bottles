@@ -1,107 +1,97 @@
-# require 'minitest/autorun'
-# require 'minitest/pride'
-# require_relative '../lib/bottles'
+require_relative '../lib/bottles'
+require_relative './spec_helper'
 
-require "test_helper"
-class BottlesTest < Minitest::Test
-
-  # def test_verse_6
-  #   expected =
-  #   "1 six-pack of beer on the wall, " +
-  #   "1 six-pack of beer.\n" +
-  #   "Take one down and pass it around, " +
-  #   "5 bottles of beer on the wall.\n"
-  # assert_equal expected, Bottles.new.verse(6)
-  # end
-
-  # def test_verse_7
-  #   expected =
-  #   "7 bottles of beer on the wall, " +
-  #   "7 bottles of beer.\n" +
-  #   "Take one down and pass it around, " +
-  #   "1 six-pack of beer on the wall.\n"
-  # assert_equal expected, Bottles.new.verse(7)
-  # end
-
-  def test_the_first_verse
+describe Bottles do
+  xit "will output a six-pack verse on six verses" do
     expected =
-      "99 bottles of beer on the wall, " +
-      "99 bottles of beer.\n" +
-      "Take one down and pass it around, " +
-      "98 bottles of xbeer on the wall.\n"
-    assert_equal expected, Bottles.new.verse(99)
+        "1 six-pack of beer on the wall, " +
+        "1 six-pack of beer.\n" +
+        "Take one down and pass it around, " +
+        "5 bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(6)
+  end
+  xit "will output a six-pack verse on seven verses" do
+    expected =
+      "7 bottles of beer on the wall, " +
+        "7 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "1 six-pack of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(6)
   end
 
-  def test_another_verse
+  it "will output the first verse" do
+    expected =
+      "99 bottles of beer on the wall, " +
+        "99 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "98 bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(99)
+  end
+
+  it "will output another verse" do
     expected =
       "3 bottles of beer on the wall, " +
-      "3 bottles of beer.\n" +
-      "Take one down and pass it around, " +
-      "2 bottles of beer on the wall.\n"
-    assert_equal expected, Bottles.new.verse(3)
+        "3 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "2 bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(3)
   end
-
-  def test_verse_2
+  it "will output a 2 verse song" do
     expected =
       "2 bottles of beer on the wall, " +
-      "2 bottles of beer.\n" +
-      "Take one down and pass it around, " +
-      "1 bottle of beer on the wall.\n"
-    assert_equal expected, Bottles.new.verse(2)
+        "2 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "1 bottle of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(2)
   end
-
-  def test_verse_1
+  it "will output a 1 verse song" do
     expected =
       "1 bottle of beer on the wall, " +
-      "1 bottle of beer.\n" +
-      "Take it down and pass it around, " +
-      "no more bottles of beer on the wall.\n"
-     assert_equal expected, Bottles.new.verse(1)
+        "1 bottle of beer.\n" +
+        "Take it down and pass it around, " +
+        "no more bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(1)
   end
-
-  def test_verse_0
+  it "will output a 0 verse song" do
     expected =
       "No more bottles of beer on the wall, " +
-      "no more bottles of beer.\n" +
-      "Go to the store and buy some more, " +
-      "99 bottles of beer on the wall.\n"
-    assert_equal expected, Bottles.new.verse(0)
+        "no more bottles of beer.\n" +
+        "Go to the store and buy some more, " +
+        "99 bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verse(0)
   end
-
-  def test_a_couple_verses
+  it "will output a subset of song verses" do
     expected =
       "99 bottles of beer on the wall, " +
-      "99 bottles of beer.\n" +
-      "Take one down and pass it around, " +
-      "98 bottles of beer on the wall.\n" +
-      "\n" +
-      "98 bottles of beer on the wall, " +
-      "98 bottles of beer.\n" +
-      "Take one down and pass it around, " +
-      "97 bottles of beer on the wall.\n"
-    assert_equal expected, Bottles.new.verses(99, 98)
+        "99 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "98 bottles of beer on the wall.\n" +
+        "\n" +
+        "98 bottles of beer on the wall, " +
+        "98 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "97 bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verses(99, 98)
   end
-
-  def test_a_few_verses
+  it "will output a another subset of song verses" do
     expected =
       "2 bottles of beer on the wall, " +
-      "2 bottles of beer.\n" +
-      "Take one down and pass it around, " +
-      "1 bottle of beer on the wall.\n" +
-      "\n" +
-      "1 bottle of beer on the wall, " +
-      "1 bottle of beer.\n" +
-      "Take it down and pass it around, " +
-      "no more bottles of beer on the wall.\n" +
-      "\n" +
-      "No more bottles of beer on the wall, " +
-      "no more bottles of beer.\n" +
-      "Go to the store and buy some more, " +
-      "99 bottles of beer on the wall.\n"
-    assert_equal expected, Bottles.new.verses(2, 0)
+        "2 bottles of beer.\n" +
+        "Take one down and pass it around, " +
+        "1 bottle of beer on the wall.\n" +
+        "\n" +
+        "1 bottle of beer on the wall, " +
+        "1 bottle of beer.\n" +
+        "Take it down and pass it around, " +
+        "no more bottles of beer on the wall.\n" +
+        "\n" +
+        "No more bottles of beer on the wall, " +
+        "no more bottles of beer.\n" +
+        "Go to the store and buy some more, " +
+        "99 bottles of beer on the wall.\n"
+    expect(expected).to eq Bottles.new.verses(2, 0)
   end
-
-  def test_the_whole_song
+  it "will output the full song" do
     expected = <<~SONG
       99 bottles of beer on the wall, 99 bottles of beer.
       Take one down and pass it around, 98 bottles of beer on the wall.
@@ -403,6 +393,6 @@ class BottlesTest < Minitest::Test
       No more bottles of beer on the wall, no more bottles of beer.
       Go to the store and buy some more, 99 bottles of beer on the wall.
     SONG
-    assert_equal expected, Bottles.new.song
+    expect(expected).to eq Bottles.new.song
   end
 end
