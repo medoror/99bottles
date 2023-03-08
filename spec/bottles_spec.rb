@@ -2,23 +2,6 @@ require_relative '../lib/bottles'
 require_relative './spec_helper'
 
 describe Bottles do
-  xit "will output a six-pack verse on six verses" do
-    expected =
-        "1 six-pack of beer on the wall, " +
-        "1 six-pack of beer.\n" +
-        "Take one down and pass it around, " +
-        "5 bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(6)
-  end
-  xit "will output a six-pack verse on seven verses" do
-    expected =
-      "7 bottles of beer on the wall, " +
-        "7 bottles of beer.\n" +
-        "Take one down and pass it around, " +
-        "1 six-pack of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(6)
-  end
-
   it "will output the first verse" do
     expected =
       "99 bottles of beer on the wall, " +
@@ -370,9 +353,9 @@ describe Bottles do
       Take one down and pass it around, 7 bottles of beer on the wall.
 
       7 bottles of beer on the wall, 7 bottles of beer.
-      Take one down and pass it around, 6 bottles of beer on the wall.
+      Take one down and pass it around, 1 six-pack of beer on the wall.
 
-      6 bottles of beer on the wall, 6 bottles of beer.
+      1 six-pack of beer on the wall, 1 six-pack of beer.
       Take one down and pass it around, 5 bottles of beer on the wall.
 
       5 bottles of beer on the wall, 5 bottles of beer.
