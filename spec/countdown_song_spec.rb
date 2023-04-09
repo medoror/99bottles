@@ -1,48 +1,7 @@
-require_relative '../lib/bottles'
+require_relative '../lib/countdown_song'
 require_relative './spec_helper'
 
-describe Bottles do
-  it "will output the first verse" do
-    expected =
-      "99 bottles of beer on the wall, " +
-        "99 bottles of beer.\n" +
-        "Take one down and pass it around, " +
-        "98 bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(99)
-  end
-
-  it "will output another verse" do
-    expected =
-      "3 bottles of beer on the wall, " +
-        "3 bottles of beer.\n" +
-        "Take one down and pass it around, " +
-        "2 bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(3)
-  end
-  it "will output a 2 verse song" do
-    expected =
-      "2 bottles of beer on the wall, " +
-        "2 bottles of beer.\n" +
-        "Take one down and pass it around, " +
-        "1 bottle of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(2)
-  end
-  it "will output a 1 verse song" do
-    expected =
-      "1 bottle of beer on the wall, " +
-        "1 bottle of beer.\n" +
-        "Take it down and pass it around, " +
-        "no more bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(1)
-  end
-  it "will output a 0 verse song" do
-    expected =
-      "No more bottles of beer on the wall, " +
-        "no more bottles of beer.\n" +
-        "Go to the store and buy some more, " +
-        "99 bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verse(0)
-  end
+describe CountdownSong do
   it "will output a subset of song verses" do
     expected =
       "99 bottles of beer on the wall, " +
@@ -54,7 +13,7 @@ describe Bottles do
         "98 bottles of beer.\n" +
         "Take one down and pass it around, " +
         "97 bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verses(99, 98)
+    expect(expected).to eq CountdownSong.new.verses(99, 98)
   end
   it "will output a another subset of song verses" do
     expected =
@@ -72,7 +31,7 @@ describe Bottles do
         "no more bottles of beer.\n" +
         "Go to the store and buy some more, " +
         "99 bottles of beer on the wall.\n"
-    expect(expected).to eq Bottles.new.verses(2, 0)
+    expect(expected).to eq CountdownSong.new.verses(2, 0)
   end
   it "will output the full song" do
     expected = <<~SONG
@@ -376,6 +335,6 @@ describe Bottles do
       No more bottles of beer on the wall, no more bottles of beer.
       Go to the store and buy some more, 99 bottles of beer on the wall.
     SONG
-    expect(expected).to eq Bottles.new.song
+    expect(expected).to eq CountdownSong.new.song
   end
 end
