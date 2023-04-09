@@ -1,13 +1,15 @@
 class CountdownSong
 
-  attr_reader :verse_template
+  attr_reader :verse_template, :min, :max
 
-  def initialize(verse_template: BottleVerse)
+  def initialize(verse_template:, min: 0, max: 999999)
     @verse_template = verse_template
+    @max = max
+    @min = min
   end
 
   def song
-    verses(99, 0)
+    verses(max, min)
   end
 
   def verses(upper, lower)
@@ -135,4 +137,9 @@ class BottleNumber6 < BottleNumber
   def container
     'six-pack'
   end
+end
+
+class VerseFake
+  def self.lyrics(number)
+    "This is verse #{number}.\n" end
 end
